@@ -1,8 +1,6 @@
-#no Instance
 from abc import ABC, abstractmethod
 
-class Entitys (ABC):
-
+class Entitys(ABC):
     def __init__(self, x, y, image, sound=None):
         super().__init__()
         self.image = image
@@ -10,16 +8,26 @@ class Entitys (ABC):
         self.rect.x = x
         self.rect.y = y
         self.sound = sound
-    
-    @abstractmethod    
+
+    @abstractmethod
     def update(self):
         pass
-    
-    @abstractmethod    
+
+    @abstractmethod
     def draw(self, surface):
         surface.blit(self.image, self.rect)
 
-    @abstractmethod    
+    @abstractmethod
     def play_sound(self):
         if self.sound:
             self.sound.play()
+    
+    @abstractmethod
+    def set_hitbox(self, x, y, width, height):
+        # Modificar las dimensiones y la posición de la hitbox
+        self.rect.x = x
+        self.rect.y = y
+        self.rect.width = width
+        self.rect.height = height
+
+    

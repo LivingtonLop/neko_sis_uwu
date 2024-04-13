@@ -9,7 +9,9 @@ def main():
     # Definir dimensiones de la ventana
     WIDTH, HEIGHT = 800, 600
     WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+
     pygame.display.set_caption("Mi Juego Pygame")
+    
 
     # Crear instancia del juego
     game = Game(WINDOW)
@@ -25,8 +27,8 @@ def main():
         game.update()
         game.render()
 
-        # Actualizar la pantalla
-        pygame.display.flip()
+        # # Actualizar la pantalla
+        # pygame.display.flip()
 
     # Salir de Pygame
     pygame.quit()
