@@ -1,8 +1,8 @@
 from src.class_abstrac.entitys import Entitys
 
 class Player (Entitys):
-    def __init__(self, x, y, image, sound=None):
-        super().__init__(x, y, image, sound)
+    def __init__(self,velocity: int, x, y, image, sound=None):
+        super().__init__(velocity,x, y, image, sound)
 
     def update(self):
         return super().update()
