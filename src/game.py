@@ -13,19 +13,17 @@ class Game:
         # self.enemy = Enemy()
 
     def update(self):
-        #Up gravity on y
-        #keyboard
         keyboard = pygame.key.get_pressed()
+        
         if keyboard[pygame.K_LEFT]:
             self.player.move(-self.player.velocity, 0,window=self.window)
         if keyboard[pygame.K_RIGHT]:
             self.player.move(self.player.velocity, 0,window=self.window)
-        # if keyboard[pygame.K_UP]:
         if keyboard[pygame.K_DOWN]:
             self.player.move(0, self.player.velocity,window=self.window)
-
-        if keyboard[pygame.K_SPACE]:
+        if keyboard[pygame.K_SPACE] and self.player.on_floor:
             self.player.jump_bool = True
+            self.player.on_floor = False
 
         self.gravity_y+=1
 
@@ -33,19 +31,18 @@ class Game:
             self.gravity_y=-self.player.jump_force
             self.player.jump_bool = False
         
-        self.player.move(0, -self.player.jump_force + self.gravity_y,window=self.window)
-        
+        if self.player.rect.y >= self.window.get_height() - self.player.image.get_height():
+            self.player.on_floor = True
 
-        self.player.draw(self.window)
+        self.player.move(0, -self.player.jump_force + self.gravity_y,window=self.window)
         # self.enemy.update()
         
     def render(self):
-        # Renderizar los elementos del juego en la ventana
-        # Por ejemplo:
-        self.window.fill((255, 255, 255))  # Llenar la ventana de blanco
+        
+        self.window.fill((255, 255, 255))
         self.window.blit(self.player.image, self.player.rect)
         # self.window.blit(self.enemy.image, self.enemy.rect)
+        self.clock.tick(30)
         pygame.display.flip()  # Actualizar la pantalla (podría moverse a main.py dependiendo de la estructura del juego)
 
-    # Agregar más métodos según sea necesario para la lógica del juego
 

@@ -7,8 +7,8 @@ class Player (Entitys):
     def update(self):
         return super().update()
     
-    def draw(self, surface):
-        return super().draw(surface)
+    def draw(self, surface,coord = None):
+        return super().draw(surface, coord)
     
     def play_sound(self):
         return super().play_sound()

@@ -9,6 +9,7 @@ class Entitys(ABC):
         self.rect.y = y
         self.sound = sound
         self.velocity = velocity
+        self.on_floor = True
         self.jump_bool = False
         self.jump_force = velocity * 2 #parano hacer tantas variables
 
@@ -17,8 +18,9 @@ class Entitys(ABC):
         pass
 
     @abstractmethod
-    def draw(self, surface):
-        surface.blit(self.image, self.rect)
+    def draw(self, surface, coord = None):
+        if coord != None: surface.blit(self.image, coord)
+        else: surface.blit(self.image, self.rect)
 
     @abstractmethod
     def play_sound(self):

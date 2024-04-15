@@ -13,10 +13,10 @@ pantalla = pygame.display.set_mode((ANCHO, ALTO))
 BLANCO = (255, 255, 255)
 
 # Definir las propiedades del personaje
-x_personaje = 50
+x_personaje = 100
 y_personaje = ALTO - 100
-ancho_personaje = 50
-alto_personaje = 50
+ancho_personaje = 100
+alto_personaje = 100
 velocidad_y = 0
 salto = False
 fuerza_salto = 10
@@ -49,13 +49,17 @@ while ejecutando:
     pantalla.fill(BLANCO)
 
     # Dibujar el personaje
-    pygame.draw.rect(pantalla, (0, 0, 0), (x_personaje, y_personaje, ancho_personaje, alto_personaje))
-
+    #pygame.draw.rect(pantalla, (0, 0, 0), (x_personaje, y_personaje, ancho_personaje, alto_personaje))
+    
+    ori = pygame.image.load("assets/images/cat_sis_beta.png")
+    sprite_player = pygame.transform.scale(ori, (100,100))
+    
+    pantalla.blit(sprite_player,(x_personaje, y_personaje, ancho_personaje, alto_personaje))
     # Actualizar la pantalla
     pygame.display.flip()
 
     # Esperar un poco para ajustar la velocidad del juego
-    pygame.time.Clock().tick(30)
+    pygame.time.Clock().tick(60)
 
 # Salir de Pygame
 pygame.quit()
